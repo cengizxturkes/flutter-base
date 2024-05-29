@@ -37,9 +37,12 @@ class OnboardingFooter extends StatelessWidget {
     return Container(
       height: AppDimens.buttonHeight,
       margin: const EdgeInsets.all(AppDimens.paddingNormal),
-      child: ValueListenableBuilder(
+      child: ValueListenableBuilder<OnboardingStep>(
         valueListenable: controller,
         builder: (context, step, widget) {
+          if (step == null) {
+            return SizedBox.shrink();
+          }
           return Stack(
             children: [
               Positioned.fill(

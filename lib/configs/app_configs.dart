@@ -5,7 +5,7 @@ import 'app_env_config.dart';
 class AppConfigs {
   AppConfigs._();
 
-  static const String appName = "NEWWAVE";
+  static const String appName = "FLUTTERBASE";
 
   static Environment env = Environment.prod;
 
