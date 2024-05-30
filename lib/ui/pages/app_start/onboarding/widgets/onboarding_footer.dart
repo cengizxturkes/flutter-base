@@ -40,9 +40,6 @@ class OnboardingFooter extends StatelessWidget {
       child: ValueListenableBuilder<OnboardingStep>(
         valueListenable: controller,
         builder: (context, step, widget) {
-          if (step == null) {
-            return SizedBox.shrink();
-          }
           return Stack(
             children: [
               Positioned.fill(
