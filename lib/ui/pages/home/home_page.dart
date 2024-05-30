@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/common/app_dimens.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_base/models/enums/load_status.dart';
 import 'package:flutter_base/repositories/movie_repository.dart';
 import 'package:flutter_base/ui/pages/home/home_cubit.dart';
 import 'package:flutter_base/ui/pages/home/home_navigator.dart';
+import 'package:flutter_base/ui/widgets/images/app_cache_image.dart';
 import 'package:flutter_base/ui/widgets/list/list_empty_widget.dart';
 import 'package:flutter_base/ui/widgets/list/list_error_widget.dart';
 import 'package:flutter_base/ui/widgets/list/list_loading_widget.dart';
@@ -129,10 +132,19 @@ class _HomeChildPageState extends State<HomeChildPage>
   void _showFlushbar(MovieEntity item) {
     Flushbar(
       message: item.title,
+      titleText: SizedBox(
+        width: 80,
+        height: 120,
+        child: AppCacheImage(
+          url: item.posterUrl,
+          fit: BoxFit.cover,
+        ),
+      ),
       duration: const Duration(seconds: 4),
       margin: const EdgeInsets.all(8),
       borderRadius: BorderRadius.circular(8),
       flushbarPosition: FlushbarPosition.TOP,
+      dismissDirection: FlushbarDismissDirection.HORIZONTAL,
     ).show(context).then((_) {
       _isFlushbarShown = false;
     });
