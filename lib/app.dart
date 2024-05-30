@@ -118,6 +118,7 @@ class _MyAppState extends State<MyApp> {
     required Locale locale,
   }) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: AppConfigs.appName,
       theme: AppThemes().theme,
       themeMode: ThemeMode.dark,

@@ -7,5 +7,7 @@ import 'configs/app_env_config.dart';
 void main() async {
   AppConfigs.env = Environment.dev;
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }

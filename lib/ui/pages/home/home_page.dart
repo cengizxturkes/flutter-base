@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/common/app_dimens.dart';
 import 'package:flutter_base/configs/app_configs.dart';
@@ -49,7 +50,7 @@ class _HomeChildPageState extends State<HomeChildPage>
   bool get wantKeepAlive => true;
   final _scrollController = ScrollController();
   late HomeCubit _cubit;
-
+  bool _isFlushbarShown = false;
   @override
   void initState() {
     super.initState();
@@ -100,6 +101,9 @@ class _HomeChildPageState extends State<HomeChildPage>
           final item = items[index];
           return MovieWidget(
             movie: item,
+            onPressed: () {
+              _showFlushbar(item);
+            },
           );
         },
         separatorBuilder: (context, index) {
@@ -120,5 +124,17 @@ class _HomeChildPageState extends State<HomeChildPage>
 
   Future<void> _onRefreshData() async {
     _cubit.fetchInitialMovies();
+  }
+
+  void _showFlushbar(MovieEntity item) {
+    Flushbar(
+      message: item.title,
+      duration: const Duration(seconds: 4),
+      margin: const EdgeInsets.all(8),
+      borderRadius: BorderRadius.circular(8),
+      flushbarPosition: FlushbarPosition.TOP,
+    ).show(context).then((_) {
+      _isFlushbarShown = false;
+    });
   }
 }
