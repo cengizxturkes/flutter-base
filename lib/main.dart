@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/ui/pages/login_page.dart';
 
-import 'app.dart';
-import 'configs/app_configs.dart';
-import 'configs/app_env_config.dart';
-
-void main() async {
-  AppConfigs.env = Environment.prod;
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
   runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Yönetim Uygulaması',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: const LoginPage(),
+    );
+  }
 }

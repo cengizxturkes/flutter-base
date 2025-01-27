@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_base/common/app_themes.dart';
 import 'package:flutter_base/configs/app_configs.dart';
+import 'package:flutter_base/generated/l10n.dart';
 import 'package:flutter_base/global_blocs/auth/auth_cubit.dart';
 import 'package:flutter_base/global_blocs/setting/app_setting_cubit.dart';
 import 'package:flutter_base/global_blocs/user/user_cubit.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
-import 'generated/l10n.dart';
 import 'network/api_client.dart';
 import 'network/api_util.dart';
 import 'repositories/auth_repository.dart';

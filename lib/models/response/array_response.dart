@@ -1,16 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'array_response.g.dart';
-
-@JsonSerializable(genericArgumentFactories: true)
 class ArrayResponse<T> {
-  @JsonKey(defaultValue: 1)
   final int page;
-  @JsonKey(name: "total_pages", defaultValue: 0)
   final int totalPages;
-  @JsonKey(name: "total_results", defaultValue: 0)
   final int totalResults;
-  @JsonKey(defaultValue: [])
   final List<T> results;
 
   ArrayResponse({
@@ -21,9 +14,24 @@ class ArrayResponse<T> {
   });
 
   factory ArrayResponse.fromJson(
-          Map<String, dynamic> json, T Function(Object? json) fromJsonT) =>
-      _$ArrayResponseFromJson(json, fromJsonT);
+      Map<String, dynamic> json, T Function(Map<String, dynamic>) fromJsonT) {
+    return ArrayResponse<T>(
+      page: json['page'] ?? 1,
+      totalPages: json['total_pages'] ?? 0,
+      totalResults: json['total_results'] ?? 0,
+      results: (json['results'] as List?)
+              ?.map((item) => fromJsonT(item as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+  }
 
-  Map<String, dynamic> toJson(Object? Function(T value) toJsonT) =>
-      _$ArrayResponseToJson(this, toJsonT);
+  Map<String, dynamic> toJson(Map<String, dynamic> Function(T) toJsonT) {
+    return {
+      'page': page,
+      'total_pages': totalPages,
+      'total_results': totalResults,
+      'results': results.map((item) => toJsonT(item)).toList(),
+    };
+  }
 }

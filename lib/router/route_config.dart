@@ -9,7 +9,7 @@ import 'package:flutter_base/ui/pages/photo_view/photo_view_page.dart';
 import 'package:flutter_base/ui/pages/profile/change_password/change_password_page.dart';
 import 'package:flutter_base/ui/pages/profile/delete_account/delete_account_page.dart';
 import 'package:flutter_base/ui/pages/profile/profile_page.dart';
-import 'package:flutter_base/ui/pages/profile/term_policy/term_policy_page.dart';
+
 import 'package:flutter_base/ui/pages/profile/update_avatar/update_avatar_page.dart';
 import 'package:flutter_base/ui/pages/profile/update_profile/update_profile_page.dart';
 import 'package:go_router/go_router.dart';
@@ -103,11 +103,6 @@ class AppRouter {
           name: changePassword,
           path: changePassword,
           builder: (context, state) => const ChangePasswordPage(),
-        ),
-        GoRoute(
-          name: termPolicy,
-          path: termPolicy,
-          builder: (context, state) => const TermPolicyPage(),
         ),
       ],
     ),
